@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7e8c8">
+<title>La Guérite — Book your watersports experience</title>
+<style>
+:root{--paper:#f7e8c8;--ink:#211f1a;--blue:#1763cf;--coral:#e94b2e;--yellow:#f4b91b;--green:#16875e;--pink:#ed7fa5}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;background-image:radial-gradient(#8d6b3d20 .7px,transparent .7px);background-size:6px 6px}
+button,input,select{font:inherit}button{cursor:pointer}
+.wrap{max-width:780px;margin:auto;padding:20px 16px 48px}
+.topline{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--green);font-size:12px;letter-spacing:.18em;font-weight:900;text-transform:uppercase;margin:8px 0 20px}
+.topline:before,.topline:after{content:"";height:2px;background:var(--ink);width:54px}
+h1,h2,h3,p{margin-top:0} h1{font-size:clamp(38px,9vw,70px);line-height:.93;text-transform:uppercase;text-align:center;letter-spacing:-.04em;margin:0 auto 12px;max-width:700px;color:var(--blue);font-weight:1000}
+h1 span{display:block;color:var(--coral);text-shadow:2px 2px 0 var(--ink);-webkit-text-stroke:.7px var(--ink)}
+.sub{text-align:center;max-width:520px;margin:0 auto 22px;font-size:15px;line-height:1.5;font-weight:800}
+.scribble{height:8px;max-width:360px;margin:0 auto 26px;border-radius:50%;border-top:5px solid var(--pink);transform:rotate(-1deg)}
+.kicker{text-align:center;color:var(--coral);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+.section-title{text-align:center;font-size:25px;text-transform:uppercase;margin:0 0 6px}
+.hint{text-align:center;font-size:13px;line-height:1.45;margin:0 auto 18px;max-width:500px}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.service{position:relative;text-align:left;background:#fff8e8b8;border:2px solid var(--ink);border-radius:15px;padding:14px 12px;min-height:160px;box-shadow:3px 4px 0 var(--ink);transition:transform .15s,background .15s}
+.service:active{transform:translate(2px,2px);box-shadow:1px 2px 0 var(--ink)}.service.active{background:#fff2a8;border-color:var(--blue);box-shadow:3px 4px 0 var(--blue)}
+.emoji{font-size:32px;display:block;margin-bottom:7px}.service strong{display:block;font-size:17px;text-transform:uppercase;margin-bottom:4px}.service small{display:block;font-size:12px;line-height:1.4}.price{display:block;margin-top:9px;color:var(--coral);font-size:19px;font-weight:1000}
+.panel{margin-top:24px;background:#fff8e8c9;border:2px solid var(--ink);border-radius:18px;padding:18px;box-shadow:4px 5px 0 var(--ink)}
+.panel h2{font-size:22px;text-transform:uppercase;margin-bottom:5px}.step{color:var(--coral);font-size:12px;letter-spacing:.15em;font-weight:1000;text-transform:uppercase}
+label{font-size:13px;font-weight:900;display:block;margin:14px 0 6px}
+select,input{width:100%;border:2px solid var(--ink);border-radius:10px;background:#fffdf5;padding:12px;color:var(--ink);min-height:46px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.slot{border:1.5px solid var(--ink);border-radius:9px;padding:10px 4px;background:#fffdf5;font-weight:800;font-size:13px}.slot.active{background:var(--blue);color:white;border-color:var(--blue)}.slot:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.note{font-size:12px;line-height:1.5;color:#514b3f;margin:10px 0 0}
+.summary{border-top:2px dashed var(--yellow);margin-top:18px;padding-top:15px;display:flex;justify-content:space-between;gap:12px;align-items:center}.total-label{font-size:12px;text-transform:uppercase;font-weight:900}.total{font-size:28px;color:var(--coral);font-weight:1000}
+.primary{width:100%;border:0;border-radius:999px;background:var(--coral);color:#fffdf5;padding:16px 18px;font-weight:1000;text-transform:uppercase;letter-spacing:.04em;box-shadow:0 4px 0 #9d2d1c;margin-top:16px}.primary:disabled{opacity:.45;cursor:not-allowed}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 20px;text-align:center}.stepbox{font-size:12px;font-weight:900;line-height:1.4}.stepbox b{display:block;font-size:26px;color:var(--blue);margin-bottom:4px}
+.footer{text-align:center;margin-top:30px}.brand{font-size:31px;color:var(--coral);font-weight:1000;text-transform:uppercase;letter-spacing:.06em}.location{font-weight:900;font-size:12px;letter-spacing:.12em}
+.msg{display:none;border:2px dashed var(--green);padding:14px;border-radius:12px;margin-top:14px;font-size:13px;line-height:1.5}.msg.show{display:block}
+.smallcaps{font-size:11px;letter-spacing:.13em;font-weight:900;text-transform:uppercase}
+@media(min-width:650px){.wrap{padding-top:32px}.service{min-height:175px;padding:18px}.panel{padding:24px}.slots{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topline">Watersports experience <span aria-hidden="true">✳</span></div>
+  <h1>A little <span>adventure</span> after lunch?</h1>
+  <p class="sub">Discover SeaBob, E-Foil, surf and paddle experiences in the crystal-clear waters of St Barts.</p>
+  <div class="scribble"></div>
+
+  <div class="kicker">01 — Pick your adventure</div>
+  <h2 class="section-title">Choose your activity</h2>
+  <p class="hint">Choose an experience to see the available durations, prices and time slots.</p>
+  <section class="services" aria-label="Activities">
+    <button class="service" data-activity="seabob">
+      <span class="emoji">〰️</span><strong>SeaBob</strong><small>Glide beneath the surface</small><span class="price">From €90</span>
+    </button>
+    <button class="service" data-activity="efoil">
+      <span class="emoji">🏄</span><strong>E-Foil</strong><small>Fly above the water</small><span class="price">€250 · 1 hour</span>
+    </button>
+    <button class="service" data-activity="surf">
+      <span class="emoji">🌊</span><strong>Surf lesson</strong><small>Private lesson · 1–3 people</small><span class="price">From €120</span>
+    </button>
+    <button class="service" data-activity="paddle">
+      <span class="emoji">☀️</span><strong>Paddle</strong><small>Explore at your own pace</small><span class="price">€40 · 1 hour</span>
+    </button>
+  </section>
+
+  <section class="panel" id="booking">
+    <div class="step">02 — Make it yours</div>
+    <h2>Your booking</h2>
+    <p class="hint" style="text-align:left;margin:0">Select the details below. This preview demonstrates the customer journey; live availability is not connected yet.</p>
+    <div class="grid2">
+      <div>
+        <label for="activity">Activity</label>
+        <select id="activity">
+          <option value="">Choose an activity</option>
+          <option value="seabob">SeaBob rental</option><option value="efoil">E-Foil rental</option><option value="surf">Surf lesson</option><option value="paddle">Paddle rental</option>
+        </select>
+      </div>
+      <div>
+        <label for="date">Date</label>
+        <input type="date" id="date">
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label for="duration">Duration / group size</label>
+        <select id="duration"><option value="">Select an option</option></select>
+      </div>
+      <div>
+        <label for="time">Available time</label>
+        <select id="time"><option value="">Choose a time slot</option></select>
+      </div>
+    </div>
+    <div class="note" id="hours">Equipment rental: 10:30 AM–5:30 PM · Surf lessons: 7:00 AM–12:00 PM.</div>
+    <div class="summary">
+      <div><div class="total-label">Your total</div><div class="note" id="summary">Select an activity to see your booking summary.</div></div>
+      <div class="total" id="total">—</div>
+    </div>
+    <button class="primary" id="checkout" disabled>Continue to secure payment ↗</button>
+    <div class="msg show" id="demoNotice">Demo preview only: no reservation is created and no payment is taken. Connect the booking backend and SumUp checkout before publishing this page.</div>
+    <div class="msg" id="validation"></div>
+  </section>
+
+  <div class="steps">
+    <div class="stepbox"><b>〰</b>Choose your<br>activity</div>
+    <div class="stepbox"><b>▦</b>Select your<br>time slot</div>
+    <div class="stepbox"><b>▣</b>Pay online<br>and get ready</div>
+  </div>
+  <footer class="footer">
+    <div class="brand">La Guérite</div><div class="location">ST BARTS</div>
+    <p class="note" style="margin-top:12px">Questions before booking? Add your business phone number and contact link here.</p>
+  </footer>
+</main>
+<script>
+const catalog={
+ seabob:{name:"SeaBob rental",hours:[10,17.5],options:[["30 minutes",90,0.5],["1 hour",150,1]]},
+ efoil:{name:"E-Foil rental",hours:[10,17.5],options:[["1 hour",250,1]]},
+ surf:{name:"Surf lesson",hours:[7,12],options:[["1 person · 1 hour",120,1],["2 people · 1 hour",190,1],["3 people · 1 hour",255,1]]},
+ paddle:{name:"Paddle rental",hours:[10,17.5],options:[["1 hour",40,1]]}
+};
+const $=id=>document.getElementById(id);
+const activity=$("activity"),duration=$("duration"),date=$("date"),time=$("time"),total=$("total"),summary=$("summary"),checkout=$("checkout");
+let price=null, length=null;
+function fillTimes(){
+ time.innerHTML='<option value="">Choose a time slot</option>';
+ const a=catalog[activity.value]; if(!a||!date.value||length===null)return;
+ // Preview slots only. Production must use server-side resource availability.
+ let start=a.hours[0], end=a.hours[1], step=0.5;
+ for(let t=start;t+length<=end+0.001;t+=step){
+   const hh=Math.floor(t), mm=Math.round((t-hh)*60);
+   const label=String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
+   const opt=document.createElement("option");opt.value=label;opt.textContent=label;time.appendChild(opt);
+ }
+}
+function update(){
+ const a=catalog[activity.value], opt=duration.selectedOptions[0];
+ price=opt&&opt.dataset.price!==undefined?Number(opt.dataset.price):null;
+ length=opt&&opt.dataset.length!==undefined?Number(opt.dataset.length):null;
+ fillTimes();
+ total.textContent=price===null?"—":"€"+price;
+ summary.textContent=a&&price!==null?a.name+" · "+opt.textContent+(date.value?" · "+date.value:""):"Select an activity and option.";
+ checkout.disabled=!(a&&price!==null&&date.value&&time.value);
+ document.querySelectorAll(".service").forEach(b=>b.classList.toggle("active",b.dataset.activity===activity.value));
+}
+function chooseActivity(v){
+ activity.value=v;duration.innerHTML='<option value="">Select an option</option>';
+ const a=catalog[v];
+ if(a)a.options.forEach(o=>{const el=document.createElement("option");el.textContent=o[0];el.dataset.price=o[1];el.dataset.length=o[2];duration.appendChild(el)});
+ update();
+}
+document.querySelectorAll(".service").forEach(b=>b.addEventListener("click",()=>{chooseActivity(b.dataset.activity);$("booking").scrollIntoView({behavior:"smooth",block:"start"})}));
+activity.addEventListener("change",()=>chooseActivity(activity.value));
+duration.addEventListener("change",update);date.addEventListener("change",update);time.addEventListener("change",update);
+const today=new Date();date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
+checkout.addEventListener("click",()=>{
+ const box=$("validation");box.className="msg show";
+ box.textContent="Prototype only — no payment has been initiated. Production checkout should first place a short hold on the selected equipment/lesson capacity, then open SumUp checkout, and confirm the booking only after SumUp verifies successful payment.";
+});
+</script>
+</body>
+</html>
