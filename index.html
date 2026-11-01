@@ -25,6 +25,10 @@ h1 span{display:block;color:var(--coral);text-shadow:2px 2px 0 var(--ink);-webki
 
 .action-area{display:flex;justify-content:center;margin:40px 0 48px}
 
+.primary-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;border-radius:999px;background:var(--coral);color:#fffdf5;font-weight:1000;font-size:18px;text-transform:uppercase;letter-spacing:.04em;box-shadow:0 6px 0 #bd341c, 0 15px 25px rgba(233,75,46,.35);text-decoration:none;transition:transform .1s,box-shadow .1s}
+.primary-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #bd341c, 0 5px 15px rgba(233,75,46,.35)}
+.primary-btn img{width:26px;height:26px}
+
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:32px 0 20px;text-align:center}.stepbox{font-size:12px;font-weight:900;line-height:1.4}.stepbox b{display:block;font-size:26px;color:var(--blue);margin-bottom:4px}
 .footer{text-align:center;margin-top:40px}.brand{font-size:31px;color:var(--coral);font-weight:1000;text-transform:uppercase;letter-spacing:.06em}.location{font-weight:900;font-size:12px;letter-spacing:.12em}
 .note{font-size:12px;line-height:1.5;color:#514b3f;margin:10px 0 0}
@@ -63,7 +67,10 @@ h1 span{display:block;color:var(--coral);text-shadow:2px 2px 0 var(--ink);-webki
   </section>
 
   <div class="action-area">
-    <a href="https://www.sumupbookings.com/la-guerite-watersports?utm_source=button_widget" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:8px;background:#000;color:#fff;font:600 14px/1.2 system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.2);text-decoration:none"><img src="https://www.sumupbookings.com/icons/calendar_white.svg" alt="" style="width:24px;height:24px" />Book Your Activity</a>
+    <a href="https://www.sumupbookings.com/la-guerite-watersports?utm_source=button_widget" target="_blank" rel="noopener noreferrer" class="primary-btn">
+      <img src="https://www.sumupbookings.com/icons/calendar_white.svg" alt="" />
+      Book Your Activity
+    </a>
   </div>
 
   <div class="steps">
