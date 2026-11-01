@@ -32,10 +32,8 @@ select,input{width:100%;border:2px solid var(--ink);border-radius:10px;backgroun
 .slot{border:1.5px solid var(--ink);border-radius:9px;padding:10px 4px;background:#fffdf5;font-weight:800;font-size:13px}.slot.active{background:var(--blue);color:white;border-color:var(--blue)}.slot:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
 .note{font-size:12px;line-height:1.5;color:#514b3f;margin:10px 0 0}
 .summary{border-top:2px dashed var(--yellow);margin-top:18px;padding-top:15px;display:flex;justify-content:space-between;gap:12px;align-items:center}.total-label{font-size:12px;text-transform:uppercase;font-weight:900}.total{font-size:28px;color:var(--coral);font-weight:1000}
-.primary{width:100%;border:0;border-radius:999px;background:var(--coral);color:#fffdf5;padding:16px 18px;font-weight:1000;text-transform:uppercase;letter-spacing:.04em;box-shadow:0 4px 0 #9d2d1c;margin-top:16px}.primary:disabled{opacity:.45;cursor:not-allowed}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 20px;text-align:center}.stepbox{font-size:12px;font-weight:900;line-height:1.4}.stepbox b{display:block;font-size:26px;color:var(--blue);margin-bottom:4px}
 .footer{text-align:center;margin-top:30px}.brand{font-size:31px;color:var(--coral);font-weight:1000;text-transform:uppercase;letter-spacing:.06em}.location{font-weight:900;font-size:12px;letter-spacing:.12em}
-.msg{display:none;border:2px dashed var(--green);padding:14px;border-radius:12px;margin-top:14px;font-size:13px;line-height:1.5}.msg.show{display:block}
 .smallcaps{font-size:11px;letter-spacing:.13em;font-weight:900;text-transform:uppercase}
 @media(min-width:650px){.wrap{padding-top:32px}.service{min-height:175px;padding:18px}.panel{padding:24px}.slots{grid-template-columns:repeat(4,1fr)}}
 </style>
@@ -97,8 +95,12 @@ select,input{width:100%;border:2px solid var(--ink);border-radius:10px;backgroun
       <div><div class="total-label">Your total</div><div class="note" id="summary">Select an activity to see your booking summary.</div></div>
       <div class="total" id="total">—</div>
     </div>
-    <button class="primary" id="checkout" disabled>Continue to secure payment ↗</button>
-    <div class="msg" id="validation"></div>
+    
+    <!-- Widget SumUp intégré ici -->
+    <div style="margin-top: 24px; display: flex; justify-content: center;">
+      <script src="https://www.sumupbookings.com/embed/sumup-bookings.js" data-slug="la-guerite-watersports" data-label="Réserver" async></script>
+    </div>
+
   </section>
 
   <div class="steps">
@@ -119,7 +121,7 @@ const catalog={
  paddle:{name:"Paddle rental",hours:[10,17.5],options:[["1 hour",40,1]]}
 };
 const $=id=>document.getElementById(id);
-const activity=$("activity"),duration=$("duration"),date=$("date"),time=$("time"),total=$("total"),summary=$("summary"),checkout=$("checkout");
+const activity=$("activity"),duration=$("duration"),date=$("date"),time=$("time"),total=$("total"),summary=$("summary");
 let price=null, length=null;
 function fillTimes(){
  time.innerHTML='<option value="">Choose a time slot</option>';
@@ -139,7 +141,6 @@ function update(){
  fillTimes();
  total.textContent=price===null?"—":"€"+price;
  summary.textContent=a&&price!==null?a.name+" · "+opt.textContent+(date.value?" · "+date.value:""):"Select an activity and option.";
- checkout.disabled=!(a&&price!==null&&date.value&&time.value);
  document.querySelectorAll(".service").forEach(b=>b.classList.toggle("active",b.dataset.activity===activity.value));
 }
 function chooseActivity(v){
@@ -152,10 +153,6 @@ document.querySelectorAll(".service").forEach(b=>b.addEventListener("click",()=>
 activity.addEventListener("change",()=>chooseActivity(activity.value));
 duration.addEventListener("change",update);date.addEventListener("change",update);time.addEventListener("change",update);
 const today=new Date();date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
-checkout.addEventListener("click",()=>{
- const box=$("validation");box.className="msg show";
- box.textContent="Prototype only — no payment has been initiated. Production checkout should first place a short hold on the selected equipment/lesson capacity, then open SumUp checkout, and confirm the booking only after SumUp verifies successful payment.";
-});
 </script>
 </body>
 </html>
